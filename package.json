@@ -1,0 +1,11 @@
+{
+  "name": "ict_webapp",
+  "version": "1.0.0",
+  "description": "interior site web app with NodeJS",
+  "main": "index.js",
+  "author": "ksh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
