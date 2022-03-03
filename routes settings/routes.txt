@@ -1,1 +1,0 @@
-global routes, image routes, user routes, table routes
