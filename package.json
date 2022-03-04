@@ -12,7 +12,8 @@
     "cookie-parser": "^1.4.6",
     "express": "^4.17.3",
     "helmet": "^5.0.2",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "pug": "^3.0.2"
   },
   "scripts": {
     "start": "nodemon --exec babel-node init.js --delay 2"

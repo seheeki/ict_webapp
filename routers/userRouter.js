@@ -1,9 +1,9 @@
 import express from "express";
 import routes from "../routes";
-
+import { userDetail, users } from '../controllers/userController';
 const userRouter = express.Router();
 
-userRouter.get(routes.users, (res, req) => res.send('Users'));
-userRouter.get(routes.userDetail, (res, req) => res.send('User Detail'));
+userRouter.get(routes.users, (req, res) => res.send("Users"));
+//userRouter.get(routes.userDetail, userDetail);
 
 export default userRouter;

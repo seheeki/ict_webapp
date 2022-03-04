@@ -10,13 +10,13 @@ const USERS = "/users";
 const USER_DETAIL = "/:id";
 
 // Images
-const IMAGES = '/images';
+const IMAGES = "/images";
 const IMAGE_DETAIL = "/:id";
 const UPLOAD = "/upload";
 const IMAGE_RESULT = "/:id/result" 
 
 // Table
-const TABLE = '/table';
+const TABLE = "/table";
 
 const routes = {
     home: HOME,

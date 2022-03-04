@@ -1,0 +1,1 @@
+export const table = (req, res) => res.send("Table");

@@ -1,11 +1,11 @@
 import express from "express";
 import routes from "../routes";
-
+import { upload, imageResult, imageDetail } from "../controllers/imageController";
 const imageRouter = express.Router();
 
-imageRouter.get(routes.images, (res, req) => res.send('Images'));
-imageRouter.get(routes.imageDetail, (res, req) => res.send('Image Detail'));
-imageRouter.get(routes.imageResult, (res, req) => res.send('Image Result'));
-imageRouter.get(routes.upload, (res, req) => res.send('Upload'));
+imageRouter.get(routes.upload, upload);
+imageRouter.get(routes.images, (req, res) => res.send("Images"));
+imageRouter.get(routes.imageDetail, imageDetail);
+imageRouter.get(routes.imageResult, imageResult);
 
 export default imageRouter;
