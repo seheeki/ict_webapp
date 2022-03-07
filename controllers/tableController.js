@@ -1,1 +1,1 @@
-export const table = (req, res) => res.send("Table");
+export const table = (req, res) => res.render("table", {pageTitle: "Table"});
