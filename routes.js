@@ -25,9 +25,21 @@ const routes = {
     logout: LOGOUT,
     search: SEARCH,
     users: USERS,
-    userDetail: USER_DETAIL,
+    userDetail: (id) => {
+        if(id){
+            return `/users/${id}`;
+        } else{
+            return USER_DETAIL;
+        }
+    },
     images: IMAGES,
-    imageDetail: IMAGE_DETAIL,
+    imageDetail: (id) => {
+        if(id){
+            return `/images/${id}`;
+        } else{
+            return IMAGE_DETAIL;
+        }
+    },
     imageResult: IMAGE_RESULT,
     upload: UPLOAD,
     table: TABLE
