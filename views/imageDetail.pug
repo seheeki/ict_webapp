@@ -1,8 +1,9 @@
 extends layouts/main
+include mixins/imageBlock 
 
 block content 
     .form__container 
-        form(action=`/images${routes.upload}`, method="post", enctype="multipart/form-data")
+        form(action=`/images${routes.id}`, method="post", enctype="multipart/form-data")
             .fileUpload 
                 label(for="file") ImageFile
                 input(type="file", accept="image/*", name="imageFile", placeholder="image")
