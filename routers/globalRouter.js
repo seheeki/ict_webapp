@@ -10,8 +10,7 @@ globalRouter.post(routes.join, postJoin)
 globalRouter.get(routes.login, getLogin);
 globalRouter.post(routes.login, postLogin);
 
-//globalRouter.get(routes.home, (req, res) => res.render('home'));
-globalRouter.get(routes.home, home)
+globalRouter.get(routes.home, home);
 globalRouter.get(routes.logout, logout);
 globalRouter.get(routes.search, (req, res) => res.send('search'));
 //globalRouter.get(routes.table, (req, res) => res.send("table"));

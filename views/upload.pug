@@ -1,10 +1,22 @@
 extends layouts/main
+include mixins/imageBlock 
 
 block content 
     .form__container 
         form(action=`/images${routes.upload}`, method="post", enctype="multipart/form-data")
             .fileUpload 
                 label(for="file") ImageFile
-                input(type="file", accept="image/*", name="imageFile", placeholder="image")
-            
+                input(type="file", accept="image/*", name="imageFile", placeholder="image", onchange="setThumbnail(event);")
+                .image__container
+                script(type='text/javascript').
+                    const setThumbnail = (event) => { 
+                        const reader = new FileReader(); 
+                        reader.onload = (event) => {
+                            const img = document.createElement("img"); 
+                            img.setAttribute("src", event.target.result); 
+                            document.querySelector(".image__container").appendChild(img); 
+                        }; 
+                        reader.readAsDataURL(event.target.files[0]); 
+                    };
             input(type="submit", value="Test")
+            

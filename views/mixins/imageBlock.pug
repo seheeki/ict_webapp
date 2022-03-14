@@ -1,6 +1,5 @@
-mixin imageBlok(image = {})
+mixin imageBlock(image = {})
     .imageBlock  
         a(href=routes.imageDetail(image.id))
             image.imageBlock__thumbnail(src=image.imageFile)
             h4.imageBlock__title=image.title 
-            h6.videoBlock__views=video.views
