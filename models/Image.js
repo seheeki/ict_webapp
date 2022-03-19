@@ -4,6 +4,10 @@ const ImageSchema = new mongoose.Schema({
     fileUrl: {
         type: String, 
         required: "FileURL is required"
+    },
+    style: {
+        type: String, 
+        default: "undefined"
     }
     //title:{
     //    type: String, 
