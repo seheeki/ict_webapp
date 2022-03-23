@@ -10,8 +10,6 @@ block content
             div.fileUpload 
                 label(for="file") ImageFile
                 input(type="file", accept="image/*", id="take-picture", name="imageFile", placeholder="image", onchange="setThumbnail(event);")
-                
-                input(type="button", value="getCamera", onclick="{getCamera()}")
                 .image__container
                 script(type='text/javascript').
                     const setThumbnail = (event) => { 
