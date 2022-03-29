@@ -2,10 +2,11 @@ extends layouts/main
 include mixins/imageBlock 
 
 block content 
-    .form-container 
-        .capture-container
-            image#jsImagePreview
+    .form-container
+        .capture-container#jsCaptureContainer
+            video#jsImagePreview
             button#jsCaptureBtn Start Capture
+            canvas#takePhotoCanvas
         form(action=`/images${routes.upload}`, method="post", enctype="multipart/form-data")
             div.fileUpload 
                 label(for="file") ImageFile

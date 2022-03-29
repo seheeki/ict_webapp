@@ -8,8 +8,6 @@ export const postUpload = async (req, res) => {
     const { body, 
             file: { path, filename } 
     } = req;
-    //let path2 = await path.replace("\\\\", "\\");
-    //console.log(path.replace("\\\\", "\\"));
     const newImage = await Image.create({
         fileUrl: path,
         title: filename
