@@ -8,7 +8,19 @@ const ImageSchema = new mongoose.Schema({
     style: {
         type: String, 
         default: "undefined"
+    },
+    furnitureNum: {
+        type: Number, 
+        default: 0
+    },
+    furnitureList:{
+        type: Array,
+        defulat: []
     }
+    //furnitureList: {
+    //    type: [String],
+    //    default: "undefined"
+    //},
     //title:{
     //    type: String, 
     //    required: "Title is required"

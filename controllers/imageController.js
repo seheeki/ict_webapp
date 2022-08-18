@@ -3,75 +3,109 @@ import Image from "../models/Image";
 import InteriorColor from "../models/InteriorColor";
 import InteriorEffect from "../models/InteriorEffect";
 
-export const getUpload = (req, res) => res.render("upload", {pageTitle: "Upload"});
-export const postUpload = async (req, res) => {
-    const { body, 
-            file: { path, filename } 
+export const getFurnitureType = async (req, res) => {
+    const { 
+        params: {id},
     } = req;
+    const imageInfo = await Image.findById(id);
+    res.render("furnitureType", {pageTitle: "furniture result", imageInfo});
+};
+
+export const getUpload = (req, res) => res.render("upload", { pageTitle: "Upload" });
+export const postUpload = async (req, res) => {
+    const { body,
+        files,
+        file: { path, filename },
+        data
+    } = req;
+    
+    //console.log(req.file['path']);
+    //console.log(req.body);
+
     const newImage = await Image.create({
         fileUrl: path,
         title: filename
     });
-    console.log(newImage.fileUrl);
-    console.log(newImage);
-    // newImage style 저장
-    // 사실상 route.imageDetail쪽이 아니라 route.imageType으로 가야 함. 
-    // 그 후에 route.imageDetail로 redirection해야한다
-    const type = imageTypeTest(); // 가상의 deep learning api를 통해 Image 모델의 type을 얻는다.
-    await Image.findOneAndUpdate({ _id: newImage.id}, { style: type });
-    // 인테리어 타입으로 이미지 정보 수정해줌
+    //console.log(newImage.fileUrl);
+
+    const request = require("request");
+    const header = { "Content-Type": "application/json" };
+    const options = {
+        url: "http://127.0.0.1:5000/",
+        method: "POST",
+        json: req.file
+    };
+
+    const callback = async (error, response) => {
+        const { body} = response;
+        if (!error & response.statusCode == 200) {
+            console.log(body);
+            console.log(`body class_name ${body.class_name}`);
+            console.log(newImage.id);
+            await Image.findOneAndUpdate({_id: newImage.id}, {style: body.class_name});
+        }
+    }
+
+    //임시
+    try{
+        const result = imageTypeTest();
+        const fResult = furnitureTypeTest();
+        const fSize = fResult.length;
+        console.log(fResult);
+        console.log(fSize);
+        const imageUpdate = await Image.findOneAndUpdate({_id: newImage.id}, {style: result});
+        for(var f = 0; f < fSize; f++){
+            imageUpdate.furnitureList.push(fResult[f]);
+        }
+        imageUpdate.furnitureNum = fSize;
+        imageUpdate.save();
+    } catch(error){
+        console.log(error);
+    }
+    //const result = request(options, callback);
     res.redirect(routes.imageType(newImage.id));
-    //res.redirect(routes.imageDetail(newImage.id));
-};
-export const imageType = async (req, res) => {
-    const {
-        params: { id }
-    } = req;
-    try {
-        const image = await Image.findById(id)
-        console.log(image.style);
-        // image style 항목에 해당하는 interior_style collection의 style 내용 가져오기
-        //const colortable = Table.findOne({style: image.style});
-        const colorTable = await InteriorColor.findOne({style: image.style});
-        const effectTable = await InteriorEffect.findOne({color: colorTable.color});
-        console.log(effectTable.color);
-        res.render("imageType", { pageTitle: image.title, image, colorTable, effectTable});
-    } catch (error) {
-        res.redirect(routes.home);
-    }
 };
 
-export const imageResult = (req, res) => res.render("imageResult", {pageTitle: "imageResult"});
-export const imageDetail = async (req, res) => {
-    const {
-        params: { id }
-    } = req;
-    try {
-        const image = await Image.findById(id)
-        // 사용자가 upload한 이미지 불러오기
-        res.render("imageDetail", { pageTitle: image.title, image });
-    } catch (error) {
-        res.redirect(routes.home);
-    }
-};
-
-//export const postImageDetail = (req, res) => 
-
-
-export const home = async (req, res) => {
-    const images = await Image.find({});
-    res.render("home", {pageTitle: "Home", images});
-};
-
-export const setThumbnail = (event) => { 
-    const reader = new FileReader(); 
-    reader.onload = (event) => {
-        const img = document.createElement("img"); 
-        img.setAttribute("src", event.target.result); 
-        document.querySelector(".image__container").appendChild(img); }; 
-        reader.readAsDataURL(event.target.files[0]); 
-};
-
+// 임시 함수
 export const imageTypeTest = () => {
     return "romantic";
 }
+
+export const furnitureTypeTest = () => {
+    return ["sofa", "TV", "bed", "cusion"];
+};
+
+// 1차 결과
+export const imageType = async (req, res) => {
+    const {
+        params: { id },
+    } = req;
+
+    console.log(`imageID : ${id}`);
+    const wait = require("waait");
+
+    async function readData() {
+        console.log("waiting...");
+        await wait(3000);
+        console.log("done."); 
+        try{
+            const image = await Image.findById(id);
+            console.log(`imageFileUrl: ${image.fileUrl}`);
+            console.log(`imageSytle: ${image.style}`);
+        
+            const colorTable = await InteriorColor.findOne({ style: image.style });
+            const effectTable = await InteriorEffect.findOne({ color: colorTable.color });
+            
+            const ID = id;
+            res.render("imageType", { pageTitle: image.title, image, colorTable, effectTable, ID });
+        } catch (error) {
+            res.redirect(routes.home);
+        }
+    }
+    readData();
+    //getFurnitureType(id);
+};
+
+export const home = async (req, res) => {
+    res.render("home", { pageTitle: "Home" });
+};

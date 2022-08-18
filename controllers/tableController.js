@@ -1,1 +1,0 @@
-export const table = (req, res) => res.render("table", {pageTitle: "Table"});

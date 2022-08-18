@@ -7,10 +7,10 @@ block content
             video#jsImagePreview
             button#jsCaptureBtn Start Capture
             canvas#takePhotoCanvas
-        form(action=`/images${routes.upload}`, method="post", enctype="multipart/form-data")
+        form(action=`/images/upload`, method="post", enctype="multipart/form-data")
             div.fileUpload 
                 label(for="file") ImageFile
-                input(type="file", accept="image/*", id="take-picture", name="imageFile", placeholder="image", onchange="setThumbnail(event);")
+                input(type="file", accept="image/*", id="take-picture", name="file", placeholder="image", onchange="setThumbnail(event);")
                 .image__container
                 script(type='text/javascript').
                     const setThumbnail = (event) => { 
@@ -22,5 +22,5 @@ block content
                         }; 
                         reader.readAsDataURL(event.target.files[0]); 
                     };
-            input(type="submit", value="Test")
+                input(type="submit", value="Test")
             

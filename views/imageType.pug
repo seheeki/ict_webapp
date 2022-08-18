@@ -1,18 +1,22 @@
 extends layouts/main
 
 block content 
-    ul 
-        li Image Type 
+
     .image-style__container
         .image__view 
             image(src=`/${image.fileUrl}`)
+    .image-information__container
         .image__info
-            h5.image__style=image.style
+            h5.image__style="Interior Type: " + image.style
         .colortable__info
-            h6.colortable__color=colorTable.color 
-            h6.colortable__colorcode=colorTable.colorCode
+            h6.colortable__color="Color: " + colorTable.color + " " +  colorTable.colorCode
+            
         .effecttable__info 
-            h6.effecttable__positive="positive"+ effectTable.positive 
-            h6.effecttable__negative="negative" + effectTable.negative 
-            h6.effecttable__symbole="symbol" + effectTable.symbol 
-            h6.effecttable__effect="effect" + effectTable.effect
+            h6.effecttable__positive="Positive: "+ effectTable.positive 
+            h6.effecttable__negative="Negative: " + effectTable.negative 
+            h6.effecttable__symbole="Symbol: " + effectTable.symbol 
+            h6.effecttable__effect="Effect: " + effectTable.effect
+
+    .furniture-test__containter 
+        .furniture-button  
+            a(href=routes.furnitureType(ID)) ➡furniture test

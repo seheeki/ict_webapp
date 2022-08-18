@@ -1,7 +1,10 @@
 @import "config/_variables.scss";
 @import "config/reset.scss";
 @import "main.scss";
-
+@import "pages/home.scss";
+@import "pages/imageType.scss";
+@import "partials/footer.scss";
+@import "partials/header.scss";
 @import "partials/imageBlock.scss";
 @import "partials/form.scss";
 @import "partials/imageCapture.scss";

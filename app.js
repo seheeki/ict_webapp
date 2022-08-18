@@ -8,12 +8,13 @@ import cookieParser from "cookie-parser";
 import userRouter from './routers/userRouter';
 import imageRouter from './routers/imageRouter';
 import globalRouter from './routers/globalRouter';
-import tableRouter from './routers/tableRouter';
 import routes from './routes';
 
 import { localsMiddleware } from './middlewares';
 
 const app = express();
+
+app.use(express.json())
 
 app.use(helmet());
 app.set("view engine", "pug");
@@ -29,6 +30,5 @@ app.use(localsMiddleware);
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.images, imageRouter);
-app.use(routes.table, tableRouter);
 
 export default app;

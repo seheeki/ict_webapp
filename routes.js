@@ -11,13 +11,12 @@ const USER_DETAIL = "/:id";
 
 // Images
 const IMAGES = "/images";
-const IMAGE_DETAIL = "/:id";
 const UPLOAD = "/upload";
-const IMAGE_RESULT = "/:id/result";
+const FILEUPLOAD = "/fileupload"
 const IMAGE_TYPE = "/:id";
 
-// Table
-const TABLE = "/table";
+// Images furniture
+const FURNITURE_TYPE = "/:id/furnitureType";
 
 const routes = {
     home: HOME,
@@ -34,21 +33,27 @@ const routes = {
         }
     },
     images: IMAGES,
-    imageDetail: (id) => {
-        if(id){
-            return `/images/${id}/imageDetail`;
-        } else{
-            return IMAGE_DETAIL;
-        }
-    },
-    imageResult: IMAGE_RESULT,
+    //imageType: (id) => {
+    //    if(id){
+    //        return `/images/${id}/imageType`;
+    //    } else{
+    //        return IMAGE_TYPE;
+    //    }
+    //},
     upload: UPLOAD,
-    table: TABLE,
+    fileupload: FILEUPLOAD,
     imageType: (id) => {
         if(id){
             return `/images/${id}`;
         } else{
             return IMAGE_TYPE;
+        }
+    },
+    furnitureType: (id) => {
+        if(id){
+            return `/images/${id}/furnitureType`;
+        } else{
+            return FURNITURE_TYPE;
         }
     }
 }

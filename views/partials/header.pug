@@ -1,16 +1,12 @@
 header.header 
+    meta(name='viewport' content='width=device-width, initial-scale=1')
     .header__column 
-        a(href=routes.home)
-            i.fa-brands.fa-gratipay
+        a(href=routes.home) Home &nbsp
+
     .header__column 
         ul  
-            if !user.isAuthenticated
-                li 
-                    a(href=routes.join) Join
-                li 
-                    a(href=routes.login) Log in    
-            else
-                li 
-                    a(href= `/images${routes.upload}`) Upload
-                li 
-                    a(href=routes.logout) Log Out
+            li 
+                a(href= `/images${routes.upload}`) Upload &nbsp;
+                br
+                br
+                br

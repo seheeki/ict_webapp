@@ -1,0 +1,13 @@
+extends layouts/main
+include mixins/imageBlock 
+
+block content 
+    .image__containor
+        .image__view
+            image(src=`/${imageInfo.fileUrl}`)
+    
+    .image-furniture__containor 
+        ul.furniture__list
+            each furniture in imageInfo.furnitureList 
+                li 
+                    span=furniture
