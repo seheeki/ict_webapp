@@ -3,12 +3,75 @@ import Image from "../models/Image";
 import InteriorColor from "../models/InteriorColor";
 import InteriorEffect from "../models/InteriorEffect";
 
+// crawling 함수
+const _ = require('lodash'); // 유틸리티 함수 제공
+const axios = require('axios'); // http 클라이언트 모듈
+const cheerio = require('cheerio'); // html 파싱 및 dom 생성
+
+// url 설정 함수
+const makingUrl = (style, furniture) => {
+    const url = 'https://search.danawa.com/dsearch.php?k1=' + style + '%20' + furniture;
+    return url;
+};
+
+// 크롤링 설정 함수
+export const getHtml = async (url, res) => {
+    try{
+        //const url = 'https://search.danawa.com/dsearch.php?k1=romantic%20sofa';
+        //res.setHeader('Access-Control-Allow-Origin', '*');
+        return await axios.get(url);
+    } catch (error){
+        console.log(error);
+    }
+};
+
 export const getFurnitureType = async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    //res.header("Access-Control-Allow-Origin", "*");
     const { 
         params: {id},
     } = req;
     const imageInfo = await Image.findById(id);
-    res.render("furnitureType", {pageTitle: "furniture result", imageInfo});
+
+    // 크롤링할 url 만들기
+    const style = imageInfo.style;
+    const furniture = imageInfo.furnitureList[0];
+    const url = makingUrl(style, furniture);
+
+    // 크롤링 실행
+    getHtml(url, res)
+    .then(html => {
+        let ulList = [];
+        let list = [];
+        res.header("Access-Control-Allow-Origin", "*");
+        const $ = cheerio.load(html.data);
+        const $bodyList =  $('div.danawa_product_list div div div div div div ul').children('li.prod_item');
+
+        $bodyList.each(function(i, elem){
+            ulList[i] = {
+                url: $(this).find('div.prod_main_info div p a.click_log_product_standard_title_').attr('href'),
+                img_src: $(this).find('div.prod_main_info div a img').attr('src'),
+                title: $(this).find('div.prod_main_info div p a.click_log_product_standard_title_').text(),
+            };
+        });
+        const data = ulList.filter(n=>n.url);
+        console.log(data);
+        
+        const wait = require("waait");
+        async function readData() {
+        console.log("waiting...");
+        await wait(3000);
+        console.log("done."); 
+        try{
+            res.render("furnitureType", {pageTitle: "furniture result", imageInfo, data});
+        } catch (error) {
+            //res.redirect(routes.home);
+        }
+    }
+    readData();
+        //console.log(data.length);
+    })
+    .then(res => console.log(res));
 };
 
 export const getUpload = (req, res) => res.render("upload", { pageTitle: "Upload" });

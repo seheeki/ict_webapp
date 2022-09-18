@@ -11,16 +11,22 @@
     "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.16.11",
     "autoprefixer": "^9.3.1",
+    "axios": "^0.21.1",
     "babel-loader": "^8.0.4",
     "body-parser": "^1.19.2",
+    "cheerio": "^1.0.0-rc.9",
     "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "css-loader": "^1.0.1",
+    "date-fns": "^2.21.1",
+    "date-fns-tz": "^1.1.4",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "helmet": "^5.0.2",
     "jsdom-global": "^3.0.2",
+    "lodash": "^4.17.20",
     "mongoimport": "^1.0.6",
     "mongoose": "^6.2.5",
     "morgan": "^1.10.0",
@@ -28,6 +34,7 @@
     "node-sass": "^4.14.1",
     "postcss-loader": "^3.0.0",
     "pug": "^3.0.2",
+    "puppeteer": "^9.1.1",
     "sass-loader": "^7.1.0",
     "waait": "^1.0.5",
     "webpack": "^4.25.1",
@@ -41,5 +48,6 @@
   "devDependencies": {
     "mocha-jsdom": "^2.0.0",
     "nodemon": "^2.0.15"
-  }
+  },
+  "proxy": "http://www.danawa.com/"
 }

@@ -40,6 +40,15 @@ const config = {
             }
         ]
     },
+    devServer: {
+        proxy: {
+            '/api': {
+                target: 'http://www.danawa.com/',
+                changeOrigin: true,
+                pathRewrite: { '/api': '/' },
+            },
+        }
+    },
     output: {
         path: OUTPUT_DIR,
         filename: "[name].js"

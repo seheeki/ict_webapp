@@ -3,6 +3,7 @@ import morgan from "morgan";
 import helmet from "helmet";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 // ==== Router ==== // 
 import userRouter from './routers/userRouter';
@@ -24,6 +25,10 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(morgan("dev"));
+
+app.use(cors({
+    origin: '*',
+}));
 
 app.use(localsMiddleware);
 

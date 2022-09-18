@@ -2,12 +2,34 @@ extends layouts/main
 include mixins/imageBlock 
 
 block content 
-    .image__containor
+    .image__container
         .image__view
             image(src=`/${imageInfo.fileUrl}`)
     
-    .image-furniture__containor 
+    .image-furniture__container 
         ul.furniture__list
-            each furniture in imageInfo.furnitureList 
-                li 
-                    span=furniture
+            li.furniture__box
+                span.jsListOpen#leftSide BED
+            li.furniture__box
+                span.jsListOpen CHAIR
+            li.furniture__box
+                span.jsListOpen#rightSide CUSION
+            li.furniture__box
+                span.jsListOpen#leftSide LAMP
+            li.furniture__box
+                span.jsListOpen MIRROR
+            li.furniture__box
+                span.jsListOpen#rightSide SOFA
+            li.furniture__box
+                span.jsListOpen#blankSide
+            li.furniture__box
+                span.jsListOpen TABLE 
+            li.furniture__box
+                span.jsListOpen#blankSide
+                br
+                <!--.shopping-link__list#jsContent -->
+                        <!--each link_info in data -->
+                            <!--.shopping-link -->
+                                <!--a.link(crossorigin="anonymous", href= link_info.url alt=link_info.title) -->
+                                    <!--img(crossorigin="anonymous", src= link_info.img_src)-->
+                                    <!--span= link_info.title-->  
