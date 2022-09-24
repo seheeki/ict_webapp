@@ -2,7 +2,7 @@
 const HOME = "/";
 const JOIN = "/join";
 const LOGIN = "/login";
-const LOGOUT = "/logut";
+const LOGOUT = "/logout";
 const SEARCH = "/search";
 
 // Users
@@ -14,6 +14,10 @@ const IMAGES = "/images";
 const UPLOAD = "/upload";
 const FILEUPLOAD = "/fileupload"
 const IMAGE_TYPE = "/:id";
+
+// Kakao
+const KAKAO = "/auth/kakao";
+const KAKAO_CALLBACK = "/auth/kakao/callback";
 
 // Images furniture
 const FURNITURE_TYPE = "/:id/furnitureType";
@@ -33,6 +37,8 @@ const routes = {
         }
     },
     images: IMAGES,
+    kakao: KAKAO,
+    kakaoCallback: KAKAO_CALLBACK,
     //imageType: (id) => {
     //    if(id){
     //        return `/images/${id}/imageType`;

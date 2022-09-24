@@ -4,7 +4,7 @@ import passportLocalMongoose from "passport-local-mongoose";
 const UserSchema = new mongoose.Schema({
     name: {type: String}, 
     email: {type: String}, 
-    avatarUrl: {type: String},
+    //avatarUrl: {type: String},
     kakaoID: {
         type: Number,
         //default: "undefined"
