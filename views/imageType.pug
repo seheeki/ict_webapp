@@ -8,15 +8,15 @@ block content
         .image-information__container
             .image__info
                 h5.image__style="Interior Type: " + image.style
-            .colortable__info
-                h6.colortable__color="Color: " + colorTable.color + " " +  colorTable.colorCode
-                
-            .effecttable__info 
-                h6.effecttable__positive="Positive: "+ effectTable.positive 
-                h6.effecttable__negative="Negative: " + effectTable.negative 
-                h6.effecttable__symbole="Symbol: " + effectTable.symbol 
-                h6.effecttable__effect="Effect: " + effectTable.effect
-    
-        .furniture-test__containter 
-            button.furniture-button  
-                a(href=routes.furnitureType(ID)) Furniture Test
+            //.colortable__info
+            //    h6.colortable__color="Color: " + colorTable.color + " " +  colorTable.colorCode
+
+            //.effecttable__info 
+            //    h6.effecttable__positive="Positive: "+ effectTable.positive 
+            //    h6.effecttable__negative="Negative: " + effectTable.negative 
+            //    h6.effecttable__symbole="Symbol: " + effectTable.symbol 
+            //    h6.effecttable__effect="Effect: " + effectTable.effect
+
+        <!--.furniture-test__containter -->
+        button
+            a(href=routes.furnitureType(ID)) Furniture Test

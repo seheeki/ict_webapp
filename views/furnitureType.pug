@@ -2,31 +2,40 @@ extends layouts/main
 include mixins/imageBlock 
 
 block content 
-    .image__container
-        .image__view
-            image(src=`/${imageInfo.fileUrl}`)
-    
-    .image-furniture__container 
-        ul.furniture__list
-            li.furniture__box
-                span.jsListOpen#leftSide BED
-            li.furniture__box
-                span.jsListOpen CHAIR
-            li.furniture__box
-                span.jsListOpen#rightSide CUSION
-            li.furniture__box
-                span.jsListOpen#leftSide LAMP
-            li.furniture__box
-                span.jsListOpen MIRROR
-            li.furniture__box
-                span.jsListOpen#rightSide SOFA
-            li.furniture__box
-                span.jsListOpen#blankSide
-            li.furniture__box
-                span.jsListOpen TABLE 
-            li.furniture__box
-                span.jsListOpen#blankSide
-                br
+    .form-container
+        .image__container
+            .image__view
+                image(src=`/${imageInfo.fileUrl}`)
+
+        .image-furniture__container 
+            ul.furniture__list
+                li.furniture__box
+                    button
+                        spann#leftSide BED
+                        a(href=routes.BED)
+                li.furniture__box
+                    button
+                        span CHAIR
+                li.furniture__box
+                    button
+                        span#rightSide CUSION
+                li.furniture__box
+                    button
+                        span#leftSide LAMP
+                li.furniture__box
+                    button 
+                        span MIRROR
+                li.furniture__box
+                    button
+                        span#rightSide SOFA
+                li.furniture__box
+                    span#blankSide
+                li.furniture__box
+                    button
+                        span TABLE 
+                li.furniture__box
+                    span#blankSide
+                    br
                 <!--.shopping-link__list#jsContent -->
                         <!--each link_info in data -->
                             <!--.shopping-link -->
