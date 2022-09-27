@@ -22,6 +22,15 @@ const KAKAO_CALLBACK = "/auth/kakao/callback";
 // Images furniture
 const FURNITURE_TYPE = "/:id/furnitureType";
 
+const FURNITURE_LIST = "/furnitureList";
+const BED = "/furnitureList/bed&:style";
+const CHAIR = "/furnitureList/chair&:style";
+const CUSION = "/furnitureListe/cusion&:style";
+const MIRROR = "/furnitureListe/mirror&:style";
+const TABLE = "/furnitureList/table&:style";
+const SOFA = "/furnitureList/sofa&:style";
+const LAMP = "/furnitureList/lamp&:style";
+
 const routes = {
     home: HOME,
     join: JOIN,
@@ -47,6 +56,7 @@ const routes = {
     //    }
     //},
     upload: UPLOAD,
+    furnitureList: FURNITURE_LIST,
     fileupload: FILEUPLOAD,
     imageType: (id) => {
         if(id){
@@ -61,7 +71,57 @@ const routes = {
         } else{
             return FURNITURE_TYPE;
         }
-    }
+    },
+    //FURNITURE LIST 
+    bed: (style) => {
+        if(style){
+            return `/furnitureList/bed&${style}`;
+        } else{
+            return BED;
+        }
+    },
+    chair: (style) => {
+        if(style){
+            return `/furnitureList/chair&${style}`;
+        } else{
+            return CHAIR;
+        }
+    },
+    cusion: (style) => {
+        if(style){
+            return `/furnitureList/cusion&${style}`;
+        } else{
+            return CUSION;
+        }
+    },
+    lamp: (style) => {
+        if(style){
+            return `/furnitureList/lamp&${style}`;
+        } else{
+            return LAMP;
+        }
+    },
+    mirror: (style) => {
+        if(style){
+            return `/furnitureList/mirror&${style}`;
+        } else{
+            return MIRROR;
+        }
+    }, 
+    sofa: (style) => {
+        if(style){
+            return `/furnitureList/sofa&${style}`;
+        } else{
+            return SOFA;
+        }
+    },
+    table: (style) => {
+        if(style){
+            return `/furnitureList/table&${style}`;
+        } else{
+            return TABLE;
+        }
+    },
 }
 
 export default routes;

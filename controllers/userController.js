@@ -36,7 +36,7 @@ export const postLogin = passport.authenticate('local', {
 // kakao login session
 export const kakaoLogin = passport.authenticate('kakao');
 export const kakaoLoginCallback = async (accessToken, refreshToken, profile, done) => {
-    console.log(accessToken, refreshToken, profile, done);
+    //console.log(accessToken, refreshToken, profile, done);
     const { _json: {id, properties, kakao_account}} = profile;
     const kID = id;
     const name = properties.nickname;
