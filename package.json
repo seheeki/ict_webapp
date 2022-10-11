@@ -1,6 +1,9 @@
 {
   "name": "ict_webapp",
   "version": "1.0.0",
+  "engines": {
+    "node": "14.x"
+  },
   "description": "interior site web app with NodeJS",
   "main": "index.js",
   "author": "ksh",
