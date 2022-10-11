@@ -1,6 +1,6 @@
 import express from "express";
 import routes from "../routes";
-import { getBed, getFurnitureType, 
+import { getBed, getChair, getCusion, getLamp, getMirror, getSofa, getTable, getFurnitureType, 
     getUpload, postUpload, 
     imageResult, imageDetail, 
     imageType, imageTypeTest } from "../controllers/imageController";
@@ -16,10 +16,11 @@ imageRouter.get(routes.furnitureType(), onlyPrivate, getFurnitureType);
 
 imageRouter.get(routes.furnitureList, (req, res)=> res.render("furnitureList"));
 imageRouter.get(routes.bed(), onlyPrivate, getBed);
-imageRouter.get(routes.chair, onlyPrivate, (req, res) => res.render("chair"));
-imageRouter.get(routes.sofa, onlyPrivate, (req, res) => res.render("sofa"));
-imageRouter.get(routes.lamp, onlyPrivate, (req, res) => res.render("lamp"));
-imageRouter.get(routes.mirror, onlyPrivate, (req, res) => res.render("mirror"));
-imageRouter.get(routes.table, onlyPrivate, (req, res) => res.render("table"));
+imageRouter.get(routes.chair(), onlyPrivate, getChair);
+imageRouter.get(routes.cusion(), onlyPrivate, getCusion);
+imageRouter.get(routes.sofa(), onlyPrivate, getSofa);
+imageRouter.get(routes.lamp(), onlyPrivate, getLamp);
+imageRouter.get(routes.mirror(), onlyPrivate, getMirror);
+imageRouter.get(routes.table(), onlyPrivate, getTable);
 
 export default imageRouter;

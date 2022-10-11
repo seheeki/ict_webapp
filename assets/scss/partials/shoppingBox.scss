@@ -1,24 +1,52 @@
-button.shopping--button{
-    max-width: 500px;
+.furniture--button{
+    li{
+        float:left;
+        margin: 5px 5px 40px 5px;
+    }
+}
+
+.shopping--list{
+    //width: 90%;
+    justify-content: center;
+    margin: auto;
+    .shopping--box{
+        height: 85px;
+        padding-bottom: 5px;
+    }
+}
+.shopping--info{
+    
     width: 100%;
-    border: 1px;
+    //border: 1px;
     background-color: white;
     color: black;//rgba(143, 225, 239, 1);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    //box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     text-align: left;
-    img{
-        width: 80px;
-        height: 80px;
-        border-radius: 5px;
-        float: left;
-        margin-right: 5px;
+    .thumbnail{
+        float:left;
+        img{
+            width: 80px;
+            height: 80px;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
     }
-
+    .title{
+        padding: 5px 0px 5px 0px;
+    }
     .price{
-        margin-left: 2px;
+        font-size: 14px;
+        margin-left: 88px;
         margin-top: 1px;
-        float: left;
         color: #3471db;
-        text-align: right;
+        .ps{
+            padding: 0px 1px 1px 0px;
+            float: left;
+        }
+        //text-align: right;
     }
+}
+    
+.shopping--site{
+    margin-top: 10px;
 }

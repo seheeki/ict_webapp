@@ -34,53 +34,301 @@ export const getFurnitureType = async (req, res) => {
     const imageInfo = await Image.findById(id);
     const style = imageInfo.style;
     res.render("furnitureType", { pageTitle: "Furniture Type", imageInfo, style});
-    //// 크롤링할 url 만들기
-    //const style = imageInfo.style;
-    //const furniture = imageInfo.furnitureList[0];
-    //const url = makingUrl(style, furniture);
-//
-    //// 크롤링 실행
-    //getHtml(url, res)
-    //.then(html => {
-    //    let ulList = [];
-    //    let list = [];
-    //    res.header("Access-Control-Allow-Origin", "*");
-    //    const $ = cheerio.load(html.data);
-    //    const $bodyList =  $('div.danawa_product_list div div div div div div ul').children('li.prod_item');
-//
-    //    $bodyList.each(function(i, elem){
-    //        ulList[i] = {
-    //            url: $(this).find('div.prod_main_info div p a.click_log_product_standard_title_').attr('href'),
-    //            img_src: $(this).find('div.prod_main_info div a img').attr('src'),
-    //            title: $(this).find('div.prod_main_info div p a.click_log_product_standard_title_').text(),
-    //        };
-    //    });
-    //    const data = ulList.filter(n=>n.url);
-    //    console.log(data);
-    //    
-    //    const wait = require("waait");
-    //    async function readData() {
-    //    console.log("waiting...");
-    //    await wait(3000);
-    //    console.log("done."); 
-    //    try{
-    //        res.render("furnitureType", {pageTitle: "furniture result", imageInfo, data});
-    //    } catch (error) {
-    //        //res.redirect(routes.home);
-    //    }
-    //}
-    //readData();
-    //    //console.log(data.length);
-    //})
-    //.then(res => console.log(res));
 };
 
 // 각종 침구 페이지들
+//bed
 export const getBed  = async (req, res) => {
     const {
         params: { style },
     } = req;
-    res.render("bed", {pageTitle: "Bed"});
+
+    // 크롤링할 url 만들기
+    const url = makingUrl(style, "bed");
+
+    // 크롤링 실행
+    getHtml(url, res)
+    .then(html => {
+        let ulList = [];
+        const $ = cheerio.load(html.data);
+        const $bodyList =  $('div.danawa_product_list div div div div div div ul').children('li.prod_item');
+
+        $bodyList.each(function(i, elem){
+            const cellEls = $(this).find('div.prod_pricelist ul li p.price_sect a strong'); 
+            ulList[i] = {
+                url: $(this).find('div.prod_main_info div p a.click_log_product_standard_title_').attr('href'),
+                img_src: $(this).find('div.prod_main_info div a img').attr('src'),
+                title: $(this).find('div.prod_main_info div p a.click_log_product_standard_title_').text(),
+                priceList: cellEls.toArray().map((node) => $(node).text()).sort(),
+            };
+        });
+        const data = ulList.filter(n=>n.url);
+
+        const wait = require("waait");
+        async function readData() {
+            console.log("waiting...");
+            await wait(3000);
+            console.log("done."); 
+            try{
+                res.render("bed", {pageTitle: "Bed", data, url, style});
+            } catch (error) {
+                res.redirect(routes.home);
+            }
+        }
+        readData();
+    })
+}
+
+//chair
+export const getChair  = async (req, res) => {
+    const {
+        params: { style },
+    } = req;
+
+    // 크롤링할 url 만들기
+    const url = makingUrl(style, "chair");
+
+    // 크롤링 실행
+    getHtml(url, res)
+    .then(html => {
+        let ulList = [];
+        const $ = cheerio.load(html.data);
+        const $bodyList =  $('div.danawa_product_list div div div div div div ul').children('li.prod_item');
+
+        $bodyList.each(function(i, elem){
+            const cellEls = $(this).find('div.prod_pricelist ul li p.price_sect a strong'); 
+            ulList[i] = {
+                url: $(this).find('div.prod_main_info div p a.click_log_product_standard_title_').attr('href'),
+                img_src: $(this).find('div.prod_main_info div a img').attr('src'),
+                title: $(this).find('div.prod_main_info div p a.click_log_product_standard_title_').text(),
+                priceList: cellEls.toArray().map((node) => $(node).text()).sort(),
+            };
+        });
+        const data = ulList.filter(n=>n.url);
+    
+        const wait = require("waait");
+        async function readData() {
+            console.log("waiting...");
+            await wait(3000);
+            console.log("done."); 
+            try{
+                res.render("chair", {pageTitle: "Chair", data, url, style});
+            } catch (error) {
+                res.redirect(routes.home);
+            }
+        }
+        readData();
+    })
+}
+
+//cusion
+export const getCusion  = async (req, res) => {
+    const {
+        params: { style },
+    } = req;
+
+    // 크롤링할 url 만들기
+    const url = makingUrl(style, "cusion");
+
+    // 크롤링 실행
+    getHtml(url, res)
+    .then(html => {
+        let ulList = [];
+        const $ = cheerio.load(html.data);
+        const $bodyList =  $('div.danawa_product_list div div div div div div ul').children('li.prod_item');
+
+        $bodyList.each(function(i, elem){
+            const cellEls = $(this).find('div.prod_pricelist ul li p.price_sect a strong'); 
+            ulList[i] = {
+                url: $(this).find('div.prod_main_info div p a.click_log_product_standard_title_').attr('href'),
+                img_src: $(this).find('div.prod_main_info div a img').attr('src'),
+                title: $(this).find('div.prod_main_info div p a.click_log_product_standard_title_').text(),
+                priceList: cellEls.toArray().map((node) => $(node).text()).sort(),
+            };
+        });
+        const data = ulList.filter(n=>n.url);
+    
+        const wait = require("waait");
+        async function readData() {
+            console.log("waiting...");
+            await wait(3000);
+            console.log("done."); 
+            try{
+                res.render("cusion", {pageTitle: "Cusion", data, url, style});
+            } catch (error) {
+                res.redirect(routes.home);
+            }
+        }
+        readData();
+    })
+}
+
+//lamp
+export const getLamp  = async (req, res) => {
+    const {
+        params: { style },
+    } = req;
+
+    // 크롤링할 url 만들기
+    const url = makingUrl(style, "lamp");
+
+    // 크롤링 실행
+    getHtml(url, res)
+    .then(html => {
+        let ulList = [];
+        const $ = cheerio.load(html.data);
+        const $bodyList =  $('div.danawa_product_list div div div div div div ul').children('li.prod_item');
+
+        $bodyList.each(function(i, elem){
+            const cellEls = $(this).find('div.prod_pricelist ul li p.price_sect a strong'); 
+            ulList[i] = {
+                url: $(this).find('div.prod_main_info div p a.click_log_product_standard_title_').attr('href'),
+                img_src: $(this).find('div.prod_main_info div a img').attr('src'),
+                title: $(this).find('div.prod_main_info div p a.click_log_product_standard_title_').text(),
+                priceList: cellEls.toArray().map((node) => $(node).text()).sort(),
+            };
+        });
+        const data = ulList.filter(n=>n.url);
+        
+        const wait = require("waait");
+        async function readData() {
+            console.log("waiting...");
+            await wait(3000);
+            console.log("done."); 
+            try{
+                res.render("lamp", {pageTitle: "Lamp", data, url, style});
+            } catch (error) {
+                res.redirect(routes.home);
+            }
+        }
+        readData();
+    })
+}
+
+//mirror
+export const getMirror  = async (req, res) => {
+    const {
+        params: { style },
+    } = req;
+
+    // 크롤링할 url 만들기
+    const url = makingUrl(style, "mirror");
+
+    // 크롤링 실행
+    getHtml(url, res)
+    .then(html => {
+        let ulList = [];
+        const $ = cheerio.load(html.data);
+        const $bodyList =  $('div.danawa_product_list div div div div div div ul').children('li.prod_item');
+
+        $bodyList.each(function(i, elem){
+            const cellEls = $(this).find('div.prod_pricelist ul li p.price_sect a strong'); 
+            ulList[i] = {
+                url: $(this).find('div.prod_main_info div p a.click_log_product_standard_title_').attr('href'),
+                img_src: $(this).find('div.prod_main_info div a img').attr('src'),
+                title: $(this).find('div.prod_main_info div p a.click_log_product_standard_title_').text(),
+                priceList: cellEls.toArray().map((node) => $(node).text()).sort(),
+            };
+        });
+        const data = ulList.filter(n=>n.url);
+        
+        const wait = require("waait");
+        async function readData() {
+            console.log("waiting...");
+            await wait(3000);
+            console.log("done."); 
+            try{
+                res.render("mirror", {pageTitle: "Mirror", data, url, style});
+            } catch (error) {
+                res.redirect(routes.home);
+            }
+        }
+        readData();
+    })
+}
+
+//mirror
+export const getSofa  = async (req, res) => {
+    const {
+        params: { style },
+    } = req;
+
+    // 크롤링할 url 만들기
+    const url = makingUrl(style, "sofa");
+
+    // 크롤링 실행
+    getHtml(url, res)
+    .then(html => {
+        let ulList = [];
+        const $ = cheerio.load(html.data);
+        const $bodyList =  $('div.danawa_product_list div div div div div div ul').children('li.prod_item');
+
+        $bodyList.each(function(i, elem){
+            const cellEls = $(this).find('div.prod_pricelist ul li p.price_sect a strong'); 
+            ulList[i] = {
+                url: $(this).find('div.prod_main_info div p a.click_log_product_standard_title_').attr('href'),
+                img_src: $(this).find('div.prod_main_info div a img').attr('src'),
+                title: $(this).find('div.prod_main_info div p a.click_log_product_standard_title_').text(),
+                priceList: cellEls.toArray().map((node) => $(node).text()).sort(),
+            };
+        });
+        const data = ulList.filter(n=>n.url);
+        
+        const wait = require("waait");
+        async function readData() {
+            console.log("waiting...");
+            await wait(3000);
+            console.log("done."); 
+            try{
+                res.render("sofa", {pageTitle: "Sofa", data, url, style});
+            } catch (error) {
+                res.redirect(routes.home);
+            }
+        }
+        readData();
+    })
+}
+
+//table
+export const getTable  = async (req, res) => {
+    const {
+        params: { style },
+    } = req;
+
+    // 크롤링할 url 만들기
+    const url = makingUrl(style, "table");
+
+    // 크롤링 실행
+    getHtml(url, res)
+    .then(html => {
+        let ulList = [];
+        const $ = cheerio.load(html.data);
+        const $bodyList =  $('div.danawa_product_list div div div div div div ul').children('li.prod_item');
+
+        $bodyList.each(function(i, elem){
+            const cellEls = $(this).find('div.prod_pricelist ul li p.price_sect a strong'); 
+            ulList[i] = {
+                url: $(this).find('div.prod_main_info div p a.click_log_product_standard_title_').attr('href'),
+                img_src: $(this).find('div.prod_main_info div a img').attr('src'),
+                title: $(this).find('div.prod_main_info div p a.click_log_product_standard_title_').text(),
+                priceList: cellEls.toArray().map((node) => $(node).text()).sort(),
+            };
+        });
+        const data = ulList.filter(n=>n.url);
+        
+        const wait = require("waait");
+        async function readData() {
+            console.log("waiting...");
+            await wait(3000);
+            console.log("done."); 
+            try{
+                res.render("table", {pageTitle: "Table", data, url, style});
+            } catch (error) {
+                res.redirect(routes.home);
+            }
+        }
+        readData();
+    })
 }
 
 export const getUpload = (req, res) => res.render("upload", { pageTitle: "Upload" });
