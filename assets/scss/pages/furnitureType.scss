@@ -5,13 +5,6 @@
         color: black;
         font-size: 40px;
 }
-.image__view{
-    img{
-        display: block;
-        margin: 0px auto;
-        width: 250px;
-    }
-}
 
 .image-furniture__container{
     padding-top: 15px;
@@ -35,6 +28,15 @@
         padding-top: 0px;
         padding-bottom: 0px;
         width: 90%;
+        border: 1px solid black;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover{
+        color: black;
+        background-color: white;
+        //outline: 4px;
+        border: 1px solid black;
     }
 }
 

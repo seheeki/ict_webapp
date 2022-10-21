@@ -5,22 +5,12 @@ block content
     .form-container
         .capture-container#jsCaptureContainer
             video#jsImagePreview
-            button#jsCaptureBtn Start Capture
-            canvas#takePhotoCanvas
+            button#jsCaptureBtn 
+                .i.fa-solid.fa-camera
+            canvas#takePhotoCanvas 
+        .result
         form(action=`/images/upload`, method="post", enctype="multipart/form-data")
             div.fileUpload 
-                label(for="file") ImageFile
-                input(type="file", accept="image/*", id="take-picture", name="file", placeholder="image", onchange="setThumbnail(event);")
-                .image__container
-                script(type='text/javascript').
-                    const setThumbnail = (event) => { 
-                        const reader = new FileReader(); 
-                        reader.onload = (event) => {
-                            const img = document.createElement("img"); 
-                            img.setAttribute("src", event.target.result); 
-                            document.querySelector(".image__container").appendChild(img); 
-                        }; 
-                        reader.readAsDataURL(event.target.files[0]); 
-                    };
+                input(type="file", accept="image/*", id="take-picture", name="file", placeholder="image")
                 input(type="submit", value="Test")
             

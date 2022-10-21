@@ -21,7 +21,7 @@ textarea,
   padding: 7px 10px;
   width: 100%;
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
   font-size: 14px;
   color: $black;
   font-weight: 600;
@@ -30,11 +30,11 @@ textarea,
   resize: none;
   &::placeholder {
     font-weight: 300;
-    color: rgba(143, 225, 239, 1);
+    color: black;//rgba(143, 225, 239, 1);
   }
 }
 button {
   border: none;
-  background-color: #3498db;
+  background-color: black;//#3498db;
   color: white;//rgba(143, 225, 239, 1);
 }

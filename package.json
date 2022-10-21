@@ -50,9 +50,11 @@
     "webpack-cli": "^3.1.2"
   },
   "scripts": {
+    "start": "node server",
     "dev:server": "nodemon --exec babel-node init.js --delay 2",
     "dev:assets": "cross-env WEBPACK_ENV=development webpack -w",
-    "build:assets": "cross-env WEBPACK_ENV=production webpack"
+    "build:assets": "cross-env WEBPACK_ENV=production webpack",
+    "build": "npm run build:server && npm run build:assets"
   },
   "devDependencies": {
     "mocha-jsdom": "^2.0.0",

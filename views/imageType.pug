@@ -4,10 +4,12 @@ block content
     .form-container
         .image-style__container
             .image__view 
+                p 나의 인테리어 스타일은?
                 image(src=`/${image.fileUrl}`)
         .image-information__container
             .image__info
-                h5.image__style="Interior Type: " + image.style
+                image(src="../uploads/romantic.png")
+                //h5.image__style="Interior Type: " + image.style
             //.colortable__info
             //    h6.colortable__color="Color: " + colorTable.color + " " +  colorTable.colorCode
 
@@ -16,7 +18,8 @@ block content
             //    h6.effecttable__negative="Negative: " + effectTable.negative 
             //    h6.effecttable__symbole="Symbol: " + effectTable.symbol 
             //    h6.effecttable__effect="Effect: " + effectTable.effect
-
+                
         <!--.furniture-test__containter -->
         button
-            a(href=routes.furnitureType(ID)) Furniture Test
+            a(href=routes.furnitureType(ID)) 내 인테리어에 맞는 가구 알아보러 가기 &nbsp
+            .i.fa-solid.fa-arrow-right 

@@ -3,8 +3,8 @@ const captureBtn = document.getElementById("jsCaptureBtn");
 const imagePreview = document.getElementById("jsImagePreview");
 
 const video = document.getElementById("video");
-const width = 350;
-const height = 260;
+const width = 320;
+const height = 160;
 
 let streamObject;
 let imageCapture;
@@ -50,8 +50,6 @@ const takeCapture = () => {
         document.body.appendChild(link);
         link.click();
     });
-    
-    captureBtn.innerHTML = "take a new picture";
 };
 
 const drawCanvas = (canvas, img) => {

@@ -2,7 +2,7 @@ import routes from "../routes";
 import Image from "../models/Image";
 import InteriorColor from "../models/InteriorColor";
 import InteriorEffect from "../models/InteriorEffect";
-
+import StyleImage from "../models/StyleImage"
 // crawling 함수
 const _ = require('lodash'); // 유틸리티 함수 제공
 const axios = require('axios'); // http 클라이언트 모듈
@@ -412,12 +412,14 @@ export const imageType = async (req, res) => {
             const image = await Image.findById(id);
             console.log(`imageFileUrl: ${image.fileUrl}`);
             console.log(`imageSytle: ${image.style}`);
-        
+            
+            const styleImage = await StyleImage.findOne({style: image.style});
+            const styleImageSRC = styleImage.imageSRC;
             const colorTable = await InteriorColor.findOne({ style: image.style });
             const effectTable = await InteriorEffect.findOne({ color: colorTable.color });
             
             const ID = id;
-            res.render("imageType", { pageTitle: image.title, image, colorTable, effectTable, ID });
+            res.render("imageType", { pageTitle: image.title, image, colorTable, effectTable, ID, styleImage });
         } catch (error) {
             res.redirect(routes.home);
         }

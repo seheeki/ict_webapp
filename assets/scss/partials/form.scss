@@ -17,24 +17,26 @@
       &:not(:last-child) {
         margin-bottom: 25px;
       }
+      label {
+        font-weight: 300;
+        margin-right: 10px;
+      }
+      #take-picture{
+        margin-bottom: 10px;
+      }
+      cursor: pointer;
     }
     textarea {
       box-shadow: 0 1px 3px rgab(0, 0, 0, 0.12), 0 1 px 2px rgba(0, 0, 0, 0.24);
       margin-bottom: 25px;
     }
     input[type="submit"] {
-      background-color: #3498db;
+      background-color: black;
       color: white;
     }
   }
   a {
     max-width: 320px;
     width: 100%;
-  }
-  .fileUpload {
-    label {
-      font-weight: 300;
-      margin-right: 10px;
-    }
   }
 }

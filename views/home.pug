@@ -5,11 +5,14 @@ block content
     br
     br
     br
+    .form-container 
+        .home-info__container 
+            h5.buisness-info__container="EASY STYLE CHANGE"
+            <!--"KOREA HOME STAGING"-->
+            h5.home__info="맞춤형 인테리어 디자인" 
 
-    .home-info__container 
-        h5.buisness-info__container="EASY STYLE CHANGE"
-        <!--"KOREA HOME STAGING"-->
-        h5.home__info="맞춤형 인테리어 디자인" 
-        
-    .upload__link
-        a(href= `/images${routes.upload}`) 당신의 인테리어 스타일은?
+        .upload__link
+            a(href= `/images${routes.upload}`) 당신의 인테리어 스타일은?
+
+        if !loggedUser
+            include ./partials/socialLogin

@@ -14,17 +14,23 @@
         height: 200;
     }
     
-    img{
-        display: block;
-        margin: 0px auto;
-        width: 250px;
+    p{
+        color: black;
+        font-size: 23px;
+        font-family: 'ChosunBg';
+        text-align: center;
+        margin: 15px 0px 15px 0px;
     }
 }
 .image-information__container{
     font-family: 'KoPubDotumMedium';
     color: black;
     text-align: center;
-    
+    .image__info{
+        img{
+            width:500px;
+        }
+    }
     h5{
         line-height: 80px;
         font-size: 30px;
