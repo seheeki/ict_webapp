@@ -1,6 +1,6 @@
 import "../scss/styles.scss";
 import "./imageCapture";
-import "./listOpen";
+import "./buttonClick";
 
 const something = async () => {
     console.log('something test');

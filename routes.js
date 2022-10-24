@@ -20,9 +20,9 @@ const KAKAO = "/auth/kakao";
 const KAKAO_CALLBACK = "/auth/kakao/callback";
 
 // Images furniture
-const FURNITURE_TYPE = "/:id/furnitureType";
+const FURNITURE_LIST = "/:id/furnitureList";
 
-const FURNITURE_LIST = "/furnitureList";
+//const FURNITURE_LIST = "/furnitureList";
 const BED = "/furnitureList/bed&:style";
 const CHAIR = "/furnitureList/chair&:style";
 const CUSION = "/furnitureList/cusion&:style";
@@ -56,7 +56,7 @@ const routes = {
     //    }
     //},
     upload: UPLOAD,
-    furnitureList: FURNITURE_LIST,
+    //furnitureList: FURNITURE_LIST,
     fileupload: FILEUPLOAD,
     imageType: (id) => {
         if(id){
@@ -65,11 +65,11 @@ const routes = {
             return IMAGE_TYPE;
         }
     },
-    furnitureType: (id) => {
+    furnitureList: (id) => {
         if(id){
-            return `/images/${id}/furnitureType`;
+            return `/images/${id}/furnitureList`;
         } else{
-            return FURNITURE_TYPE;
+            return FURNITURE_LIST;
         }
     },
     //FURNITURE LIST 

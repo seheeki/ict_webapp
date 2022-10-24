@@ -1,0 +1,22 @@
+.furniture--button{
+    li{
+        float:left;
+        margin: 15px 5px 15px 5px;
+        button{
+            font-size: 16px;
+            height: 30px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            width: 100%;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+        .clicked{
+            color: black;
+            background-color: white;
+            //outline: 4px;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+    }
+}

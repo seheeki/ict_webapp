@@ -9,26 +9,6 @@ const ImageSchema = new mongoose.Schema({
         type: String, 
         default: "undefined"
     },
-    furnitureNum: {
-        type: Number, 
-        default: 0
-    },
-    furnitureList:{
-        type: Array,
-        defulat: []
-    }
-    //furnitureList: {
-    //    type: [String],
-    //    default: "undefined"
-    //},
-    //title:{
-    //    type: String, 
-    //    required: "Title is required"
-    //},
-    //createdAt: {
-    //    type: Date, 
-    //    default: Date.now
-    //}
 });
 
 const model = mongoose.model("Image", ImageSchema);

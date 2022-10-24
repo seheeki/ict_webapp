@@ -8,7 +8,7 @@ block content
                 image(src=`/${image.fileUrl}`)
         .image-information__container
             .image__info
-                image(src="../uploads/romantic.png")
+                image(src=styleImage.imageSRC)
                 //h5.image__style="Interior Type: " + image.style
             //.colortable__info
             //    h6.colortable__color="Color: " + colorTable.color + " " +  colorTable.colorCode
@@ -21,5 +21,5 @@ block content
                 
         <!--.furniture-test__containter -->
         button
-            a(href=routes.furnitureType(ID)) 내 인테리어에 맞는 가구 알아보러 가기 &nbsp
+            a(href=routes.furnitureList(ID)) 내 인테리어에 맞는 가구 알아보러 가기 &nbsp
             .i.fa-solid.fa-arrow-right 
