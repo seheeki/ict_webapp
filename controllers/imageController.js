@@ -39,7 +39,10 @@ export const getFurnitureList = async (req, res) => {
     for(var i=0; i<crawlingInfo.furnitures.length; i++){
         shoppingURLS.push(makingUrl(style, crawlingInfo.furnitures[i]));
     }
-    console.log(shoppingURLS);
+    const prodList = Array();
+    for(var i=0; i<crawlingInfo.furnitures.length; i++){
+        prodList.push(await Product.find({"style": style, "furniture": crawlingInfo.furnitures[i]}));
+    }
     //
     //for(const f of crawlingInfo.furnitures){
     //    const url = makingUrl(style, f);
@@ -77,7 +80,7 @@ export const getFurnitureList = async (req, res) => {
     //}
     
     
-    res.render("furnitureList", { pageTitle: "Furniture List", imageInfo, style, shoppingURLS});
+    res.render("furnitureList", { pageTitle: "Furniture List", imageInfo, style, shoppingURLS, prodList});
 };
 
 export const getUpload = (req, res) => res.render("upload", { pageTitle: "Upload" });

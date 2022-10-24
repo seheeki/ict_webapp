@@ -26,153 +26,142 @@ block content
 
         .prod__box#BED
             ul.shopping--list
-                li.shopping--box
-                    //button.shopping--button
-                    .shopping--info
-                        .thumbnail 
-                            img(src="/uploads/images/26580952052429334_342193540.png")
-                        .title
-                            p
-                                a(href="1") 침대1
-                li.shopping--box
-                    //button.shopping--button
-                    .shopping--info
-                        .thumbnail 
-                            img(src="/uploads/images/26580952052429334_342193540.png")
-                        .title
-                            p
-                                a(href="2") 침대2
+                each item in prodList[0]
+                    li.shopping--box 
+                        .shopping--info
+                            .thumbnail
+                                img(src=item.img_src)
+                            .title
+                                p 
+                                    a(href=item.url)=item.title
+                            .price 
+                                p.ps=item.priceList[0] 
+                                if item.priceList.length > 1
+                                    p.ps ~
+                                    p.ps=item.priceList[item.priceList.length-1]
+                                p 원
+
             .shopping--site
                 button
                     a(href=shoppingURLS[0]) 더 많은 침대 보러가기!
 
         .prod__box#CHAIR
             ul.shopping--list
-                li.shopping--box
-                    //button.shopping--button
-                    .shopping--info
-                        .thumbnail 
-                            img(src="/uploads/images/26580952052429334_342193540.png")
-                        .title
-                            p
-                                a(href="3") 의자1
-                li.shopping--box
-                    //button.shopping--button
-                    .shopping--info
-                        .thumbnail 
-                            img(src="/uploads/images/26580952052429334_342193540.png")
-                        .title
-                            p
-                                a(href="4") 의자2
+                each item in prodList[1]
+                    li.shopping--box 
+                        .shopping--info
+                            .thumbnail
+                                img(src=item.img_src)
+                            .title
+                                p 
+                                    a(href=item.url)=item.title
+                            .price 
+                                p.ps=item.priceList[0] 
+                                if item.priceList.length > 1
+                                    p.ps ~
+                                    p.ps=item.priceList[item.priceList.length-1]
+                                p 원
             .shopping--site
                 button
                     a(href=shoppingURLS[1]) 더 많은 의자 보러가기!
+
         .prod__box#CUSHION
             ul.shopping--list
-                li.shopping--box
-                    //button.shopping--button
-                    .shopping--info
-                        .thumbnail 
-                            img(src="/uploads/images/26580952052429334_342193540.png")
-                        .title
-                            p
-                                a(href="5") 쿠션1
-                li.shopping--box
-                    //button.shopping--button
-                    .shopping--info
-                        .thumbnail 
-                            img(src="/uploads/images/26580952052429334_342193540.png")
-                        .title
-                            p
-                                a(href="6") 쿠션2
+                each item in prodList[2]
+                    li.shopping--box 
+                        .shopping--info
+                            .thumbnail
+                                img(src=item.img_src)
+                            .title
+                                p 
+                                    a(href=item.url)=item.title
+                            .price 
+                                p.ps=item.priceList[0] 
+                                if item.priceList.length > 1
+                                    p.ps ~
+                                    p.ps=item.priceList[item.priceList.length-1]
+                                p 원
             .shopping--site
                 button
                     a(href=shoppingURLS[2]) 더 많은 쿠션 보러가기!
 
         .prod__box#LAMP
             ul.shopping--list
-                li.shopping--box
-                    //button.shopping--button
-                    .shopping--info
-                        .thumbnail 
-                            img(src="/uploads/images/26580952052429334_342193540.png")
-                        .title
-                            p
-                                a(href="5") 전등1
-                li.shopping--box
-                    //button.shopping--button
-                    .shopping--info
-                        .thumbnail 
-                            img(src="/uploads/images/26580952052429334_342193540.png")
-                        .title
-                            p
-                                a(href="6") 전등2
+                each item in prodList[3]
+                    li.shopping--box 
+                        .shopping--info
+                            .thumbnail
+                                img(src=item.img_src)
+                            .title
+                                p 
+                                    a(href=item.url)=item.title
+                            .price 
+                                p.ps=item.priceList[0] 
+                                if item.priceList.length > 1
+                                    p.ps ~
+                                    p.ps=item.priceList[item.priceList.length-1]
+                                p 원
+
             .shopping--site
                 button
                     a(href=shoppingURLS[3]) 더 많은 전등 보러가기!
 
         .prod__box#MIRROR
             ul.shopping--list
-                li.shopping--box
-                    //button.shopping--button
-                    .shopping--info
-                        .thumbnail 
-                            img(src="/uploads/images/26580952052429334_342193540.png")
-                        .title
-                            p
-                                a(href="5") 거울1
-                li.shopping--box
-                    //button.shopping--button
-                    .shopping--info
-                        .thumbnail 
-                            img(src="/uploads/images/26580952052429334_342193540.png")
-                        .title
-                            p
-                                a(href="6") 거울2
+                each item in prodList[4]
+                    li.shopping--box 
+                        .shopping--info
+                            .thumbnail
+                                img(src=item.img_src)
+                            .title
+                                p 
+                                    a(href=item.url)=item.title
+                            .price 
+                                p.ps=item.priceList[0] 
+                                if item.priceList.length > 1
+                                    p.ps ~
+                                    p.ps=item.priceList[item.priceList.length-1]
+                                p 원
             .shopping--site
                 button
                     a(href=shoppingURLS[4]) 더 많은 거울 보러가기!
 
         .prod__box#SOFA
             ul.shopping--list
-                li.shopping--box
-                    //button.shopping--button
-                    .shopping--info
-                        .thumbnail 
-                            img(src="/uploads/images/26580952052429334_342193540.png")
-                        .title
-                            p
-                                a(href="5") 소파1
-                li.shopping--box
-                    //button.shopping--button
-                    .shopping--info
-                        .thumbnail 
-                            img(src="/uploads/images/26580952052429334_342193540.png")
-                        .title
-                            p
-                                a(href="6") 소파2
+                each item in prodList[5]
+                    li.shopping--box 
+                        .shopping--info
+                            .thumbnail
+                                img(src=item.img_src)
+                            .title
+                                p 
+                                    a(href=item.url)=item.title
+                            .price 
+                                p.ps=item.priceList[0] 
+                                if item.priceList.length > 1
+                                    p.ps ~
+                                    p.ps=item.priceList[item.priceList.length-1]
+                                p 원
             .shopping--site
                 button
                     a(href=shoppingURLS[5]) 더 많은 소파 보러가기!
 
         .prod__box#TABLE
             ul.shopping--list
-                li.shopping--box
-                    //button.shopping--button
-                    .shopping--info
-                        .thumbnail 
-                            img(src="/uploads/images/26580952052429334_342193540.png")
-                        .title
-                            p
-                                a(href="5") 책상1
-                li.shopping--box
-                    //button.shopping--button
-                    .shopping--info
-                        .thumbnail 
-                            img(src="/uploads/images/26580952052429334_342193540.png")
-                        .title
-                            p
-                                a(href="6") 책상2        
+                each item in prodList[6]
+                    li.shopping--box 
+                        .shopping--info
+                            .thumbnail
+                                img(src=item.img_src)
+                            .title
+                                p 
+                                    a(href=item.url)=item.title
+                            .price 
+                                p.ps=item.priceList[0] 
+                                if item.priceList.length > 1
+                                    p.ps ~
+                                    p.ps=item.priceList[item.priceList.length-1]
+                                p 원       
             .shopping--site
                 button
                     a(href=shoppingURLS[6]) 더 많은 책상 보러가기!
