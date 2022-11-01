@@ -18,7 +18,6 @@ const makingUrl = (style, furniture) => {
 // 크롤링 설정 함수
 export const getHtml = async (url, res) => {
     try{
-        //const url = 'https://search.danawa.com/dsearch.php?k1=romantic%20sofa';
         //res.setHeader('Access-Control-Allow-Origin', '*');
         return await axios.get(url);
     } catch (error){
@@ -80,7 +79,7 @@ export const getFurnitureList = async (req, res) => {
     //}
     
     
-    res.render("furnitureList", { pageTitle: "Furniture List", imageInfo, style, shoppingURLS, prodList});
+    res.render("furnitureList", { pageTitle: "Furniture List", imageInfo, style, shoppingURLS, prodList, user: req.user});
 };
 
 export const getUpload = (req, res) => res.render("upload", { pageTitle: "Upload" });
@@ -93,7 +92,8 @@ export const postUpload = async (req, res) => {
 
     const newImage = await Image.create({
         fileUrl: path,
-        title: filename
+        title: filename,
+        uploader: req.user.id
     });
 
     const request = require("request");
@@ -128,7 +128,7 @@ export const postUpload = async (req, res) => {
 // 임시 함수
 export const imageTypeTest = () => {
     return "natural";
-}
+};
 
 // 1차 결과
 export const imageType = async (req, res) => {
@@ -144,9 +144,8 @@ export const imageType = async (req, res) => {
             const styleImage = await StyleImage.findOne({style: image.style});
             //const colorTable = await InteriorColor.findOne({ style: image.style });
             //const effectTable = await InteriorEffect.findOne({ color: colorTable.color });
-            
             const ID = id;
-            res.render("imageType", { pageTitle: image.title, image, ID, styleImage }); //colorTable, effectTable, ID, styleImage });
+            res.render("imageType", { pageTitle: "Image Type", image, ID, styleImage, user:req.user }); //colorTable, effectTable, ID, styleImage });
         } catch (error) {
             console.log(error);
             res.redirect(routes.home);

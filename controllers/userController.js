@@ -59,10 +59,10 @@ export const kakaoLoginCallback = async (accessToken, refreshToken, profile, don
     } catch (error){
         return done(error);
     }
-}
+};
 export const postKakaoLogin = (req, res) => {
     res.redirect(routes.home);
-}
+};
 
 export const logout = (req, res, next) => {
     req.logout(req.user, err=> {
@@ -72,7 +72,9 @@ export const logout = (req, res, next) => {
         res.redirect(routes.home);
     });
 
-}
+};
 
-export const users = (req, res) => res.render("users", {pageTitle: "Users"});
-export const userDetail = (req, res) => res.render("userDetail", {pageTitle: "UserDetail"});
+export const me = (req, res) => {
+    console.log(req.user);
+    res.render("imageType", {pageTitle:" Image Type", user: req.user})
+};

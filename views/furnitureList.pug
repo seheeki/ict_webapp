@@ -3,14 +3,15 @@ include mixins/imageBlock
 
 block content 
     .form-container
-        .image__container
-            .image__view
-                image(src=`/${imageInfo.fileUrl}`)
+        if loggedUser && loggedUser.id === user.id
+            .image__container
+                .image__view
+                    image(src=`/${imageInfo.fileUrl}`)
 
         div.furniture--button
             ul
                 li
-                    button.furitureBtn#BEDBtn BED
+                    button.furitureBtn.clicked#BEDBtn BED
                 li
                     button.furitureBtn#CHAIRBtn CHAIR
                 li

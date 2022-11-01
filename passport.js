@@ -17,14 +17,3 @@ passport.use(
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-
-//passport.use(
-//    new kakaoStrategy(
-//        {
-//            clientID : process.env.KAKAO_ID,
-//            callbackURL : `http://localhost:4000${routes.kakaoCallback}`
-//        },
-//        kakaoLoginCallback
-//    )
-//);
-

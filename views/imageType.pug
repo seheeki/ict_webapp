@@ -2,24 +2,25 @@ extends layouts/main
 
 block content 
     .form-container
-        .image-style__container
-            .image__view 
-                p 나의 인테리어 스타일은?
-                image(src=`/${image.fileUrl}`)
-        .image-information__container
-            .image__info
-                image(src=styleImage.imageSRC)
-                //h5.image__style="Interior Type: " + image.style
-            //.colortable__info
-            //    h6.colortable__color="Color: " + colorTable.color + " " +  colorTable.colorCode
-
-            //.effecttable__info 
-            //    h6.effecttable__positive="Positive: "+ effectTable.positive 
-            //    h6.effecttable__negative="Negative: " + effectTable.negative 
-            //    h6.effecttable__symbole="Symbol: " + effectTable.symbol 
-            //    h6.effecttable__effect="Effect: " + effectTable.effect
-                
-        <!--.furniture-test__containter -->
-        button
-            a(href=routes.furnitureList(ID)) 내 인테리어에 맞는 가구 알아보러 가기 &nbsp
-            .i.fa-solid.fa-arrow-right 
+        if loggedUser && loggedUser.id === user.id
+            .image-style__container
+                .image__view 
+                    p 나의 인테리어 스타일은?
+                    image(src=`/${image.fileUrl}`)
+            .image-information__container
+                .image__info
+                    image(src=styleImage.imageSRC)
+                    //h5.image__style="Interior Type: " + image.style
+                //.colortable__info
+                //    h6.colortable__color="Color: " + colorTable.color + " " +  colorTable.colorCode
+    
+                //.effecttable__info 
+                //    h6.effecttable__positive="Positive: "+ effectTable.positive 
+                //    h6.effecttable__negative="Negative: " + effectTable.negative 
+                //    h6.effecttable__symbole="Symbol: " + effectTable.symbol 
+                //    h6.effecttable__effect="Effect: " + effectTable.effect
+                    
+            <!--.furniture-test__containter -->
+            button
+                a(href=routes.furnitureList(ID)) 내 인테리어에 맞는 가구 알아보러 가기 &nbsp
+                .i.fa-solid.fa-arrow-right 

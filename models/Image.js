@@ -9,6 +9,9 @@ const ImageSchema = new mongoose.Schema({
         type: String, 
         default: "undefined"
     },
+    uploader: {
+        type: String
+    }
 });
 
 const model = mongoose.model("Image", ImageSchema);
