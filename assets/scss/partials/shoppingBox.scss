@@ -1,15 +1,16 @@
+.prod__box{
+    width:100%;
+    
+}
 .shopping--list{
-    //width: 90%;
-    justify-content: center;
-    margin: auto;
+    margin: 0 26% 0 26%;
+    //justify-content: center;
     .shopping--box{
         height: 85px;
         padding-bottom: 5px;
     }
 }
 .shopping--info{
-    
-    width: 100%;
     //border: 1px;
     background-color: white;
     color: black;//rgba(143, 225, 239, 1);
@@ -41,5 +42,8 @@
 }
     
 .shopping--site{
-    margin-top: 10px;
+    button{
+        margin: auto;
+        display: block;
+    }
 }

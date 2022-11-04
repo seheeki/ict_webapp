@@ -73,8 +73,3 @@ export const logout = (req, res, next) => {
     });
 
 };
-
-export const me = (req, res) => {
-    console.log(req.user);
-    res.render("imageType", {pageTitle:" Image Type", user: req.user})
-};

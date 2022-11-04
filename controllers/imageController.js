@@ -86,12 +86,12 @@ export const getUpload = (req, res) => res.render("upload", { pageTitle: "Upload
 export const postUpload = async (req, res) => {
     const { body,
         files,
-        file: { path, filename },
+        file: { location, filename },
         data
     } = req;
 
     const newImage = await Image.create({
-        fileUrl: path,
+        fileUrl: location,
         title: filename,
         uploader: req.user.id
     });
@@ -135,7 +135,7 @@ export const imageType = async (req, res) => {
     const {
         params: { id },
     } = req;
-
+    
     const wait = require("waait");
     async function readData() {
         await wait(3000);

@@ -6,7 +6,7 @@ block content
         if loggedUser && loggedUser.id === user.id
             .image__container
                 .image__view
-                    image(src=`/${imageInfo.fileUrl}`)
+                    image(src=imageInfo.fileUrl crossorigin)
 
         div.furniture--button
             ul
