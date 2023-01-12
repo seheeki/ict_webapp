@@ -26,11 +26,14 @@ export const getHtml = async (url, res) => {
 };
 
 export const getFurnitureList = async (req, res) => {
-    //res.setHeader('Access-Control-Allow-Origin', '*');
-    //res.header("Access-Control-Allow-Origin", "*");
+    res.setHeader('Access-Control-Allow-origin', '*');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    
     const { 
         params: {id},
     } = req;
+    //res.header("Access-Control-Allow-Origin", "http://img.danawa.com/");
+    
     const imageInfo = await Image.findById(id);
     const style = imageInfo.style;
     const crawlingInfo = {"style": style, "furnitures": ["bed", "chair", "cushion", "lamp", "mirror", "sofa", "table"]};
@@ -96,6 +99,7 @@ export const postUpload = async (req, res) => {
         uploader: req.user.id
     });
 
+    console.log(req.file.location);
     const request = require("request");
     const header = { "Content-Type": "application/json" };
     const options = {
@@ -114,14 +118,7 @@ export const postUpload = async (req, res) => {
         }
     }
 
-    //임시
-    try{
-        const result = imageTypeTest();
-        const imageUpdate = await Image.findOneAndUpdate({_id: newImage.id}, {style: result});
-    } catch(error){
-        console.log(error);
-    }
-    //const result = request(options, callback);
+    const result = request(options, callback);
     res.redirect(routes.imageType(newImage.id));
 };
 
@@ -145,6 +142,7 @@ export const imageType = async (req, res) => {
             //const colorTable = await InteriorColor.findOne({ style: image.style });
             //const effectTable = await InteriorEffect.findOne({ color: colorTable.color });
             const ID = id;
+            console.log(styleImage.style + ' ' + styleImage.imageSRC);
             res.render("imageType", { pageTitle: "Image Type", image, ID, styleImage, user:req.user }); //colorTable, effectTable, ID, styleImage });
         } catch (error) {
             console.log(error);
